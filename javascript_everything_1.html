@@ -1,0 +1,82 @@
+<!-- JavaScript(JS) -->
+<!--
+	
+	Programming Language Executed in the broswer.
+		HTML to define the content of web pages
+		CSS to specify the layout of web pages
+		JavaScript to program the behavior of web pages 
+
+	JavaScript is Case Sensitive.
+
+	Keyword 		Description
+	break	 		Terminates a switch or a loop
+	continue 		Jumps out of a loop and starts at the top
+	debugger 		Stops the execution of JavaScript, and calls (if available) the debugging function
+	do ...			while 	Executes a block of statements, and repeats the block, while a condition is true
+	for 			Marks a block of statements to be executed, as long as a condition is true
+	function 		Declares a function
+	if ... else 	Marks a block of statements to be executed, depending on a condition
+	return 			Exits a function
+	switch 			Marks a block of statements to be executed, depending on different cases
+	try ... catch 	Implements error handling to a block of statements
+	var 			Declares a variable
+
+ -->
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		
+		<!--[if lt IE 9]>
+  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+		<title>JS e1</title>
+		<meta charset="UTF-8" />
+		<meta name="author" content="FieldTraveller" />
+		<meta name="application-name" content="javascript_everything" />
+		<meta name="description" content="JavaScript Quick Reference" />
+		<meta name="keywords" content="HTML,JavaScript, Quick Reference" />
+
+		<!--
+			<script type="text/javascript"></script> Script (JS written within the tag)(Can be defined within the body or/and head)
+
+			<script scr="url"></script> (Use to load external js)
+		 -->
+		<script type="text/javascript">
+			
+			function js_function_1() 
+			{
+			    document.getElementById("p1").innerHTML = "...And Now You Not.";
+			}
+
+			function js_function_2() 
+			{
+			    document.getElementById("p1").innerHTML = "...And Its Back.";
+			}
+
+		</script>
+
+		<script type="text/javascript" src="javascript_1.js"></script>
+
+	</head>
+
+	<!--
+		Output Options
+	    window.alert() 		Writing into an alert box
+	    document.write() 	Writing into the HTML output
+	    innerHTML 			Writing into an HTML element
+	    console.log() 		Writing into the browser console
+	 -->
+
+	<body>
+
+		<p id="p1">Now You See Me...</p>
+		<button type="button" onclick="js_function_1()">Click Me!</button>
+		<button type="button" onclick="js_function_2()">Click Me Too!</button>
+		<button type="button" onclick="js_function_3()">Don't Click Me!</button>
+
+	</body>
+</html> 
+<!---->
+<!--End Of File-->
