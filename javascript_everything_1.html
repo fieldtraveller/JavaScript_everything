@@ -7,6 +7,10 @@
 		JavaScript to program the behavior of web pages 
 
 	JavaScript is Case Sensitive.
+	JavaScript has dynamic types. (This means that the same variable can be used as different types)
+	Variables defined within function have local scope
+	Variables defined outside a function have global scope ( All global variables belong to the window object)
+	If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
 
 	Keyword 		Description
 	break	 		Terminates a switch or a loop
@@ -20,6 +24,7 @@
 	switch 			Marks a block of statements to be executed, depending on different cases
 	try ... catch 	Implements error handling to a block of statements
 	var 			Declares a variable
+
 
  -->
 <!DOCTYPE html>
@@ -44,6 +49,56 @@
 			<script scr="url"></script> (Use to load external js)
 		 -->
 		<script type="text/javascript">
+
+			/*
+				Use typeof to determine the type of variable
+				undefined (deflaut-when declared but not assigned)
+				null (object)
+			*/
+			/*
+				Relational Operators (The usual List)
+				=== (equal value and equal type)
+			*/
+			/*
+				function name(parameter1, parameter2, parameter3,...) 
+				{
+				    //code to be executed
+				} 
+			*/
+			/*
+				Event Handling
+
+				Event 			Description
+				onchange 		An HTML element has been changed
+				onclick 		The user clicks an HTML element
+				onmouseover 	The user moves the mouse over an HTML element
+				onmouseout 		The user moves the mouse away from an HTML element
+				onkeydown 		The user pushes a keyboard key
+				onload 			The browser has finished loading the page
+			*/
+			/*
+				Number Properties
+				Property 			Description
+				MAX_VALUE 			Returns the largest number possible in JavaScript
+				MIN_VALUE 			Returns the smallest number possible in JavaScript
+				NEGATIVE_INFINITY 	Represents negative infinity (returned on overflow)
+				NaN 				Represents a "Not-a-Number" value
+				POSITIVE_INFINITY 	Represents infinity (returned on overflow)
+			*/
+			var number_1 = 9;                               						// Number
+			var string_1 = "This is a String";                      				// String
+			var array_1 = ["element_1", "element_2", "element_3"];           		// Array
+			var object_1 = {														/* Object(use new to declare object,
+																								Access elements- object.parameter or Object[parameter] 
+																								Access Methods- object.method())*/
+								parameter_1:"parameter_1", 
+								parameter_2:"parameter_2",
+								parameter_2:function
+											{
+			    								return parameter1+parameter2;
+											}
+						   };  	
+			var boolean_1 = true;													// Boolean
 			
 			function js_function_1() 
 			{
