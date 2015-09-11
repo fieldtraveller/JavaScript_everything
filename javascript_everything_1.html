@@ -1,53 +1,74 @@
-<!-- JavaScript(JS) -->
-<!--
-	
-	Programming Language Executed in the broswer.
-		HTML to define the content of web pages
-		CSS to specify the layout of web pages
-		JavaScript to program the behavior of web pages 
-
-	JavaScript is Case Sensitive.
-	JavaScript has dynamic types. (This means that the same variable can be used as different types)
-	Variables defined within function have local scope
-	Variables defined outside a function have global scope ( All global variables belong to the window object)
-	If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
-
-	Keyword 		Description
-	break	 		Terminates a switch or a loop
-	continue 		Jumps out of a loop and starts at the top
-	debugger 		Stops the execution of JavaScript, and calls (if available) the debugging function
-	do ...			while 	Executes a block of statements, and repeats the block, while a condition is true
-	for 			Marks a block of statements to be executed, as long as a condition is true
-	function 		Declares a function
-	if ... else 	Marks a block of statements to be executed, depending on a condition
-	return 			Exits a function
-	switch 			Marks a block of statements to be executed, depending on different cases
-	try ... catch 	Implements error handling to a block of statements
-	var 			Declares a variable
-
-
- -->
 <!DOCTYPE html>
 <html lang="en-US">
-
 	<head>
-		
-		<!--[if lt IE 9]>
-  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		
 		<title>JS e1</title>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8" /> <!--Should be within first 1024 bytes of the file-->
 		<meta name="author" content="FieldTraveller" />
 		<meta name="application-name" content="javascript_everything" />
 		<meta name="description" content="JavaScript Quick Reference" />
 		<meta name="keywords" content="HTML,JavaScript, Quick Reference" />
 
+		<!--[if lt IE 9]>
+  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+		<!-- JavaScript(JS) -->
 		<!--
-			<script type="text/javascript"></script> Script (JS written within the tag)(Can be defined within the body or/and head)
+			
+			Programming Language Executed in the broswer.
+				HTML to define the content of web pages
+				CSS to specify the layout of web pages
+				JavaScript to program the behavior of web pages 
 
+			JavaScript is Case Sensitive.
+
+			JavaScript has dynamic types. (This means that the same variable can be used as different types)
+			Variables defined within function have local scope
+			Variables defined outside a function have global scope ( All global variables belong to the window object)
+			Variables not declared has global scope
+			If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+			Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function)
+			Only declarations are hoisted and not initializations.
+
+			"use strict"; (at the start of the document for strict JS)
+
+		 -->
+
+		<!--
+			<script type="text/javascript"></script> Script (JS written within the tag)(Can be defined within the body(Recommeded:End of Body) or/and head (Only variables, functions and loading scripts with variables and functions, direct code not recommeded due to speed, non availability of body elements))
+			
 			<script scr="url"></script> (Use to load external js)
 		 -->
+		
+	</head>
+
+	<!--
+		Output Options
+	    window.alert() 		Writing into an alert box
+	    document.write() 	Writing into the HTML output
+	    innerHTML 			Writing into an HTML element
+	    console.log() 		Writing into the browser console
+	 -->
+
+	<body>
+
+		<button type="button" onclick="js_function_1()">Click Me!</button>
+		<button type="button" onclick="js_function_2()">Click Me Too!</button>
+		<button type="button" onclick="js_function_3()">Don't Click Me!</button>
+
+		<br//>
+		<p id="p1"> Now You See Me...</p>
+		
+		<p id="p2"> </p>
+		<p id="p3"> </p>
+		<p id="p4"> </p>
+		<p id="p5"> </p>
+		<p id="p6"> </p>
+		<p id="p7"> </p>
+		<p id="p8"> </p>
+		<p id="p9"> </p>
+		<p id="p10"> </p>
+
 		<script type="text/javascript">
 
 			/*
@@ -56,13 +77,114 @@
 				null (object)
 			*/
 			/*
-				Relational Operators (The usual List)
-				=== (equal value and equal type)
+				Number Properties
+				Property 			Description
+				MAX_VALUE 			Returns the largest number possible in JavaScript
+				MIN_VALUE 			Returns the smallest number possible in JavaScript
+				NEGATIVE_INFINITY 	Represents negative infinity (returned on overflow)
+				NaN 				Represents a "Not-a-Number" value
+				POSITIVE_INFINITY 	Represents infinity (returned on overflow)
+
+				var x = new Number(number); //String as an object
+			*/
+			/*
+				Escape Characters
+				\' 	single quote
+				\" 	double quote
+				\\ 	backslash
+				\n 	new line
+				\r 	carriage return
+				\t 	tab
+				\b 	backspace
+				\f 	form feed
+
+				charAt() 				Returns the character at the specified index (position)
+				charCodeAt()		 	Returns the Unicode of the character at the specified index
+				concat()			 	Joins two or more strings, and returns a copy of the joined strings
+				fromCharCode() 			Converts Unicode values to characters
+				indexOf() 				Returns the position of the first found occurrence of a specified value in a string
+				lastIndexOf() 			Returns the position of the last found occurrence of a specified value in a string
+				localeCompare() 		Compares two strings in the current locale
+				match()				 	Searches a string for a match against a regular expression, and returns the matches
+				replace() 				Searches a string for a value and returns a new string with the value replaced
+				search() 				Searches a string for a value and returns the position of the match
+				slice() 				Extracts a part of a string and returns a new string
+				split() 				Splits a string into an array of substrings
+				substr() 				Extracts a part of a string from a start position through a number of characters
+				substring() 			Extracts a part of a string between two specified positions
+				toLocaleLowerCase() 	Converts a string to lowercase letters, according to the host's locale
+				toLocaleUpperCase() 	Converts a string to uppercase letters, according to the host's locale
+				toLowerCase() 			Converts a string to lowercase letters
+				toString() 				Returns the value of a String object
+				toUpperCase() 			Converts a string to uppercase letters
+				trim() 					Removes whitespace from both ends of a string
+				valueOf()			 	Returns the primitive value of a String object
+
+				var x= new String("string"); //String as an object
+				
+				Number() 			Returns a number, converted from its argument.
+				parseFloat() 		Parses its argument and returns a floating point number
+				parseInt() 			Parses its argument and returns an integer
+				toString() 			Returns a number as a string
+				toExponential() 	Returns a string, with a number rounded and written using exponential notation.
+				toFixed() 			Returns a string, with a number rounded and written with a specified number of decimals.
+				toPrecision() 		Returns a string, with a number written with a specified length
+				valueOf() 			Returns a number as a number
+
+				abs(x) 				Returns the absolute value of x
+				acos(x) 			Returns the arccosine of x, in radians
+				asin(x) 			Returns the arcsine of x, in radians
+				atan(x) 			Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+				atan2(y,x) 			Returns the arctangent of the quotient of its arguments
+				ceil(x) 			Returns x, rounded upwards to the nearest integer
+				cos(x) 				Returns the cosine of x (x is in radians)
+				exp(x) 				Returns the value of Ex
+				floor(x) 			Returns x, rounded downwards to the nearest integer
+				log(x) 				Returns the natural logarithm (base E) of x
+				max(x,y,z,...,n) 	Returns the number with the highest value
+				min(x,y,z,...,n) 	Returns the number with the lowest value
+				pow(x,y) 			Returns the value of x to the power of y
+				random() 			Returns a random number between 0 and 1
+				round(x) 			Rounds x to the nearest integer
+				sin(x) 				Returns the sine of x (x is in radians)
+				sqrt(x) 			Returns the square root of x
+				tan(x) 				Returns the tangent of an angle
+			*/
+			/*
+				var date=new Date(date);	//Type of Object. If "date" is missing, it gives current date, else used to set date acoording to appropriate format
+
+				getDate() 			Get the day as a number (1-31)
+				getDay() 			Get the weekday as a number (0-6)
+				getFullYear() 		Get the four digit year (yyyy)
+				getHours() 			Get the hour (0-23)
+				getMilliseconds() 	Get the milliseconds (0-999)
+				getMinutes() 		Get the minutes (0-59)
+				getMonth() 			Get the month (0-11)
+				getSeconds() 		Get the seconds (0-59)
+				getTime() 			Get the time (milliseconds since January 1, 1970)
+
+				setDate() 			Set the day as a number (1-31)
+				setFullYear() 		Set the year (optionally month and day)
+				setHours() 			Set the hour (0-23)
+				setMilliseconds() 	Set the milliseconds (0-999)
+				setMinutes() 		Set the minutes (0-59)
+				setMonth() 			Set the month (0-11)
+				setSeconds() 		Set the seconds (0-59)
+				setTime() 			Set the time (milliseconds since January 1, 1970)
+			*/
+			/*
+				var x = new Array();  //array as an object
+				var x=[];	//empty array
+			*/
+			/*
+				=== (Relational Operator-equal value and equal type)
 			*/
 			/*
 				function name(parameter1, parameter2, parameter3,...) 
 				{
 				    //code to be executed
+
+				    //return value; //return from function
 				} 
 			*/
 			/*
@@ -76,33 +198,35 @@
 				onkeydown 		The user pushes a keyboard key
 				onload 			The browser has finished loading the page
 			*/
-			/*
-				Number Properties
-				Property 			Description
-				MAX_VALUE 			Returns the largest number possible in JavaScript
-				MIN_VALUE 			Returns the smallest number possible in JavaScript
-				NEGATIVE_INFINITY 	Represents negative infinity (returned on overflow)
-				NaN 				Represents a "Not-a-Number" value
-				POSITIVE_INFINITY 	Represents infinity (returned on overflow)
-			*/
 			var number_1 = 9;                               						// Number
-			var string_1 = "This is a String";                      				// String
-			var array_1 = ["element_1", "element_2", "element_3"];           		// Array
-			var object_1 = {														/* Object(use new to declare object,
-																								Access elements- object.parameter or Object[parameter] 
+			var string_1 = "This is a String\\";                      				// String
+			var array_1 = ["element_1", "element_2", "element_3"];           		// Array (uses []) (Type of object)
+			var object_1 = {														/* Object(uses {})(use {} (or new Object) to declare object,
+																								Access elements- object.property or Object[property] 
 																								Access Methods- object.method())*/
-								parameter_1:"parameter_1", 
-								parameter_2:"parameter_2",
-								parameter_2:function
-											{
-			    								return parameter1+parameter2;
-											}
+								property_1:"property_1", 
+								property_2:"property_2",
+								property_as_method: 	function()
+														{
+			    											return this.property_1+this.property_2;
+														}
 						   };  	
+
 			var boolean_1 = true;													// Boolean
+
+			document.getElementById("p2").innerHTML = number_1+"<br/>"+string_1+"<br/>"+string_1.length+"<br/>"+array_1+"<br/>"+object_1.property_1+"<br/>"+object_1.property_2+"<br/>"+object_1.property_as_method()+"<br/>"+boolean_1;
 			
+			document.getElementById("p4").innerHTML = typeof number_1+"<br/>"+typeof string_1+"<br/>"+typeof array_1+"<br/>"+typeof object_1+"<br/>"+typeof object_1.property_1+"<br/>"+typeof object_1.property_2+"<br/>"+typeof object_1.property_as_method+"<br/>"+typeof boolean_1+"<br/>"+typeof undefined+"<br/>"+typeof null+"<br/>"+(null==undefined)+"<br/>"+(null===undefined);
+			
+			document.getElementById("p5").innerHTML = js_function_4();
+
+			document.getElementById("p6").innerHTML = (new Date())+"<br/>"+Number((new Date()));
+
 			function js_function_1() 
 			{
-			    document.getElementById("p1").innerHTML = "...And Now You Not.";
+			    document.getElementById("p1").innerHTML = "...And Now You Don't.";
+
+			    document.getElementById("p2").innerHTML = number_1;
 			}
 
 			function js_function_2() 
@@ -110,26 +234,14 @@
 			    document.getElementById("p1").innerHTML = "...And Its Back.";
 			}
 
+			function js_function_4() 
+			{
+			    return (9*9);
+			}
 		</script>
 
+		<!-- Load EXternal JS -->
 		<script type="text/javascript" src="javascript_1.js"></script>
-
-	</head>
-
-	<!--
-		Output Options
-	    window.alert() 		Writing into an alert box
-	    document.write() 	Writing into the HTML output
-	    innerHTML 			Writing into an HTML element
-	    console.log() 		Writing into the browser console
-	 -->
-
-	<body>
-
-		<p id="p1">Now You See Me...</p>
-		<button type="button" onclick="js_function_1()">Click Me!</button>
-		<button type="button" onclick="js_function_2()">Click Me Too!</button>
-		<button type="button" onclick="js_function_3()">Don't Click Me!</button>
 
 	</body>
 </html> 
