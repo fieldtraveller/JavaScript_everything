@@ -30,7 +30,8 @@
 			If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
 			Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function)
 			Only declarations are hoisted and not initializations.
-
+			
+			ECMAScript 5's strict mode is a way to opt in to a restricted variant of JavaScript. Strict mode isn't just a subset: it intentionally has different semantics from normal code. Browsers not supporting strict mode will run strict mode code with different behavior from browsers that do, so don't rely on strict mode without feature-testing for support for the relevant aspects of strict mode. Strict mode code and non-strict mode code can coexist, so scripts can opt into strict mode incrementally.
 			"use strict"; (at the start of the document for strict JS)
 
 		 -->
@@ -79,6 +80,13 @@
 		<p id="p18"> </p>
 		<p id="p19"> </p>
 		<p id="p20"> </p>
+
+		<form name="form_1" action="" onsubmit="validateform()" >
+			
+			Name: <input type="number" name="fnumber1">
+			
+			<input type="submit" value="Submit">
+		</form>
 
 		<script type="text/javascript">
 
@@ -204,6 +212,23 @@
 				} 
 			*/
 			/*
+				Regular expressions are patterns used to match character combinations in strings. 
+				In JavaScript, regular expressions are also objects. 
+				These patterns are used with the exec and test methods of RegExp, and with the match, replace, search, and split methods of String.
+				
+				pattern enclosed between forward slashes
+
+				var x= new RegExp();	//Regular expressions as an object
+
+				exec 		A RegExp method that executes a search for a match in a string. It returns an array of information.
+				test 		A RegExp method that tests for a match in a string. It returns true or false.
+				match 		A String method that executes a search for a match in a string. It returns an array of information or null on a mismatch.
+				search 		A String method that tests for a match in a string. It returns the index of the match, or -1 if the search fails.
+				replace 	A String method that executes a search for a match in a string, and replaces the matched substring with a replacement substring.
+				split 		A String method that uses a regular expression or a fixed string to break a string into an array of substrings.
+
+			*/
+			/*
 				Event Handling
 
 				Event 			Description
@@ -214,6 +239,11 @@
 				onkeydown 		The user pushes a keyboard key
 				onload 			The browser has finished loading the page
 			*/
+			/*
+				The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect.
+			*/
+
+			// "use strict";
 			var number_1 = 9;                               						// Number
 			var string_1 = "This is a String\\";                      				// String
 			var array_1 = ["element_1", "element_2", "element_3"];           		// Array (uses []) (Type of object)
@@ -329,6 +359,31 @@
 			
 			document.getElementById("p13").innerHTML = temp_1;
 
+			var regular_expression_1=/contain/i
+			document.getElementById("p14").innerHTML =regular_expression_1.test("This does not contain sugar");
+
+			document.getElementById("p15").innerHTML =/does/i.exec("This does not contain sugar");
+
+			try 
+			{
+				// document.getElementById("p99").innerHTML ="I don't know what I typed.";
+
+				throw "This is an error";
+			}
+			catch(err) 
+			{
+				document.getElementById("p16").innerHTML ="Exception Caught"+" "+err;
+			}
+			finally 
+			{
+				document.getElementById("p17").innerHTML ="Finally Block";
+			}
+
+			// debugger;
+			// console.log("This Writes to the console. Press F12 to check.");
+
+
+
 			function js_function_1() 
 			{
 			    document.getElementById("p1").innerHTML = "...And Now You Don't.";
@@ -346,6 +401,25 @@
 
 			    return (9*9);
 			}
+
+			function validateform()
+			{
+				var x = document.forms["form_1"]["fnumber1"].value;
+			    if (x == null) 
+			    {
+			        alert("Value is Null.");
+			    }
+			    else if (typeof x == undefined) 
+			    {
+			        alert("Value is undefined.");
+			    }
+			    else if (x == "")
+			    {
+			        alert("Value is \"\".");
+			    }
+			    
+			}
+
 		</script>
 
 		<!-- Load EXternal JS -->
