@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="FieldTraveller" />
+		<meta name="application-name" content="javascript_everything" />
+		<meta name="description" content="JavaScript Quick Reference" />
+		<meta name="keywords" content="HTML,JavaScript, Quick Reference" />
+		
+		<title>JS e4</title>
+		
+		<!--[if lt IE 9]>
+  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+
+	</head>
+
+	<body>
+
+		<h1>Google Maps</h1>
+		<br/>
+
+		<div id="gmap" style="width:500px;height:380px;"></div>
+		<br/>
+
+		<p id="p1"></p>
+		<p id="p2"></p>
+		<p id="p3"></p>
+		<p id="p4"></p>
+		<p id="p5"></p>
+		<p id="p6"></p>
+		<p id="p7"></p>
+		<p id="p8"></p>
+		<p id="p9"></p>
+		<p id="p10"></p>
+		<p id="p11"></p>
+		<p id="p12"></p>
+		<p id="p13"></p>
+		<p id="p14"></p>
+		<p id="p15"></p>
+		<p id="p16"></p>
+		<p id="p17"></p>
+		<p id="p18"></p>
+		<p id="p19"></p>
+		<p id="p20"></p>
+
+		<script type="text/javascript">
+
+			var center_of_map=new google.maps.LatLng(15.3,73.91);
+
+			function initialize_map() 
+			{
+			  var mapProp = {
+			    center:center_of_map,
+			    zoom:13,
+			    mapTypeId:google.maps.MapTypeId.HYBRID
+			    // mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			  
+			  var map=new google.maps.Map(document.getElementById("gmap"),mapProp);
+
+			  var marker=new google.maps.Marker({
+			  	position:center_of_map,
+			  	icon:"./images/custom_marker.png",
+			  	animation:google.maps.Animation.BOUNCE
+			  });
+
+			  marker.setMap(map);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize_map);
+
+		</script>
+
+	</body>
+</html> 
+<!---->
+<!--End Of File-->
