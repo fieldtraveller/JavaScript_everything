@@ -41,7 +41,7 @@
 			
 			<script scr="url"></script> (Use to load external js)
 		 -->
-		
+
 	</head>
 
 	<!--
@@ -58,7 +58,7 @@
 		<button type="button" onclick="js_function_2()">Click Me Too!</button>
 		<button type="button" onclick="js_function_3()">Don't Click Me!</button>
 
-		<br//>
+		<br/>
 		<p id="p1"> Now You See Me...</p>
 		
 		<p id="p2"> </p>
@@ -81,24 +81,98 @@
 		<p id="p19"> </p>
 		<p id="p20"> </p>
 
-		<form name="form_1" action="" onsubmit="validateform()" >
+		<form name="form_1" action="#p20" onsubmit="validateform()" >
 			
-			Name: <input type="number" name="fnumber1">
+			Name: <input type="number" name="fnumber1" min="100" max="300">
 			
 			<input type="submit" value="Submit">
 		</form>
 
 		<script type="text/javascript">
+			/*
+				Primitive Type: strings,number,boolean,null and undefined
 
+				Objects
+					collection of properties,each property has a name:value pair
+
+					Created using one of the 3 methods
+						Using an Object Literal
+						Using new keyword
+						Using an Object Constructor(/prototype function name) (by defining a prototype)
+					
+					Delete a property
+						delete object_name.property_name;
+
+					object_name.prototype;(returns the prototype of the object)
+					prototype_function_name.prototype.new_property_name=property_value; (adding new properties to prototype)
+			*/
 			/*
 				Use typeof to determine the type of variable
 				undefined (deflaut-when declared but not assigned)
 				null (object)
 			*/
 			/*
+				var x = new Array();  //array as an object
+				var x=[];	//empty array
+			*/
+			/*
+				Functions (function is an object in JS)
+
+				Function Declaration
+					function name(parameter1, parameter2, parameter3,...) 
+					{
+					    //code to be executed
+
+					    //return value; //return from function
+					} 
+
+				Function Expression(anonymous function) (used to declare methods of objects)
+					var x=function name(parameter1, parameter2, parameter3,...) 
+					{
+					    //code to be executed
+
+					    //return value; //return from function
+					};
+
+					var a=x(1,2,3);
+
+				Function declaration using new keyword
+					var function_name = new Function("parameter_1", "parameter_2",..., "body_of_function");
+
+				Self-Invoking Function (end declaration with (); to make function self invoking)
+					(function(){})();
+				
+				unpassed arguments are treated as undefined, extra arguments are not available directly via argument list
+				if an argument is an object then it is passed by reference else its passed by value
+				the parameter list(arguments) need not be specified(fully or even partially) and do not have any specify type for them.
+				arguments-an array available within a function which contains all the arguments passed.
+
+				Invoking functions
+					called by global object(html page window object-Window)(in this case this within function body refers to the global object)
+						function_name();
+						Window.function_name();
+
+					called by object
+						object.function_name();
+
+					Invoking a Function with a Function Method
+						function_name.call(calling_object, parameter1, parameter2, parameter3, parameter4,...);
+						
+						var argument_list_array=[parameter1, parameter2, parameter3, parameter4,...];
+						function_name.apply(calling_object, argument_list_array);
+
+					Function are also called as methods of objects and constructor(when new is used)
+
+				closure
+					var add = (function (){
+										    var counter = 0;	// the value of counter acts like a static value which is mainted between calls to add
+										    return function () {return counter += 1;}
+										  })();
+			*/
+			/*
 				Number Properties
 				Property 			Description
-				MAX_VALUE 			Returns the largest number possible in JavaScript
+				MAX_VALUE 			Returns the largest number possible in 'JavaScript'
 				MIN_VALUE 			Returns the smallest number possible in JavaScript
 				NEGATIVE_INFINITY 	Represents negative infinity (returned on overflow)
 				NaN 				Represents a "Not-a-Number" value
@@ -193,23 +267,11 @@
 				setTime() 			Set the time (milliseconds since January 1, 1970)
 			*/
 			/*
-				var x = new Array();  //array as an object
-				var x=[];	//empty array
-			*/
-			/*
 				=== (Relational Operator-equal value and equal type)
 				!== (not equal value or not equal type)
 
 				For bitwise operators, the number is a signed 32 bits integer
 				For mathematical operations, the number is 64 bits float point
-			*/
-			/*
-				function name(parameter1, parameter2, parameter3,...) 
-				{
-				    //code to be executed
-
-				    //return value; //return from function
-				} 
 			*/
 			/*
 				Regular expressions are patterns used to match character combinations in strings. 
@@ -247,6 +309,8 @@
 			var number_1 = 9;                               						// Number
 			var string_1 = "This is a String\\";                      				// String
 			var array_1 = ["element_1", "element_2", "element_3"];           		// Array (uses []) (Type of object)
+			
+			// Using an Object Literal
 			var object_1 = {														/* Object(uses {})(use {} (or new Object) to declare object,
 																								Access elements- object.property or Object[property] 
 																								Access Methods- object.method())*/
@@ -254,15 +318,36 @@
 								property_2:"property_2",
 								property_as_method: 	function()
 														{
-			    											return this.property_1+this.property_2;
+			    											return this.property_1+this.property_2+" property_as_method";
 														}
-						   };  	
+						   };
+			// Using new keyword
+			var object_2=new Object();
+
+			// Using an Object Constructor
+			function object_constructor(sometext) {
+			    this.sometext = sometext;
+
+			    // return this;
+			}
+			var object_3=new object_constructor("hello");
+			// adding new properties
+			object_3.somemoretext="somemoretext"
+			// adding new properties to object_prototype
+			object_constructor.prototype.evenmoretext="evenmoretext";
+			var object_4=new object_constructor("world");
+			
 
 			var boolean_1 = true;													// Boolean
 
-			document.getElementById("p2").innerHTML = number_1+"<br/>"+string_1+"<br/>"+string_1.length+"<br/>"+array_1+"<br/>"+object_1.property_1+"<br/>"+object_1.property_2+"<br/>"+object_1.property_as_method()+"<br/>"+boolean_1;
+			document.getElementById("p2").innerHTML = number_1+"<br/>"+string_1+"<br/>"+string_1.length+"<br/>"+array_1+"<br/>"+object_1.property_1+"<br/>"+object_1.property_2+"<br/>"+object_1.property_as_method()+"<br/>"+object_3+"<br/>"+object_3["sometext"]+"<br/>"+object_3.somemoretext+"<br/>"+
+				object_4.evenmoretext+"<br/>"+object_4.prototype+"<br/>"+object_constructor.prototype+"<br/>"+
+				boolean_1;
 			
-			document.getElementById("p4").innerHTML = typeof number_1+"<br/>"+typeof string_1+"<br/>"+typeof array_1+"<br/>"+typeof object_1+"<br/>"+typeof object_1.property_1+"<br/>"+typeof object_1.property_2+"<br/>"+typeof object_1.property_as_method+"<br/>"+typeof boolean_1+"<br/>"+typeof undefined+"<br/>"+typeof null+"<br/>"+(null==undefined)+"<br/>"+(null===undefined);
+			// Delete a property
+			// delete object_3.sometext;
+
+			document.getElementById("p4").innerHTML = typeof number_1+"<br/>"+typeof string_1+"<br/>"+typeof array_1+"<br/>"+typeof object_1+"<br/>"+typeof object_1.property_1+"<br/>"+typeof object_1.property_2+"<br/>"+typeof object_1.property_as_method+"<br/>"+typeof object_2+"<br/>"+typeof boolean_1+"<br/>"+typeof undefined+"<br/>"+typeof null+"<br/>"+(null==undefined)+"<br/>"+(null===undefined);
 			
 			document.getElementById("p5").innerHTML = js_function_4();
 
@@ -382,8 +467,6 @@
 			// debugger;
 			// console.log("This Writes to the console. Press F12 to check.");
 
-
-
 			function js_function_1() 
 			{
 			    document.getElementById("p1").innerHTML = "...And Now You Don't.";
@@ -404,26 +487,48 @@
 
 			function validateform()
 			{
-				var x = document.forms["form_1"]["fnumber1"].value;
-			    if (x == null) 
+				var form_element=document.forms["form_1"]["fnumber1"];
+				var x = form_element.value;
+			    // if (x == null) 
+			    // {
+			    //     alert("Value is Null.");
+			    // }
+			    // else if (typeof x == undefined) 
+			    // {
+			    //     alert("Value is undefined.");
+			    // }
+			    // else if (x == "")
+			    // {
+			    //     alert("Value is \"\".");
+			    // }
+
+			    if (form_element.checkValidity() == false) 
 			    {
-			        alert("Value is Null.");
-			    }
-			    else if (typeof x == undefined) 
+					// document.getElementById("p18").innerHTML = form_element.validationMessage;
+    			}	
+    			else if (form_element.checkValidity() == true) 
+    			{
+    				form_element.setCustomValidity("fine");
+			    	document.getElementById("p18").innerHTML = form_element.validationMessage;
+			    	document.getElementById("p19").innerHTML = form_element.willValidate;
+    			}
+
+    			if (form_element.validity.typeMismatch) 
 			    {
-			        alert("Value is undefined.");
-			    }
-			    else if (x == "")
-			    {
-			        alert("Value is \"\".");
-			    }
+					document.getElementById("p19").innerHTML = "typeMismatch";
+    			}	
 			    
 			}
+
+			(function js_function_5() 
+			{
+				console.log("Self InVoking Function");
+			})();
 
 		</script>
 
 		<!-- Load EXternal JS -->
-		<script type="text/javascript" src="javascript_1.js"></script>
+		<script type="text/javascript" src="./scripts/javascript/javascript_1.js"></script>
 
 	</body>
 </html> 

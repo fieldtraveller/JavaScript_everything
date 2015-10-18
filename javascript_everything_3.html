@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="FieldTraveller" />
+		<meta name="application-name" content="javascript_everything" />
+		<meta name="description" content="JavaScript Quick Reference" />
+		<meta name="keywords" content="HTML,JavaScript, Quick Reference" />
+		
+		<title>JS e3</title>
+		
+		<!--[if lt IE 9]>
+  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<input type="button" value="Google" onclick="window.location.assign('http://www.google.com')">
+		
+		<input type="button" value="Alert" onclick="window.alert('Alert')">
+		
+		<input type="button" value="Confirm" onclick="window.confirm('Confirm')">
+		
+		<input type="button" value="Prompt" onclick="window.prompt('Prompt','prompting')">
+		<br/>
+
+		<p id="p1"></p>
+		<p id="p2"></p>
+		<p id="p3"></p>
+		<p id="p4"></p>
+		<p id="p5"></p>
+		<p id="p6"></p>
+		<p id="p7"></p>
+		<p id="p8"></p>
+		<p id="p9"></p>
+		<p id="p10"></p>
+		<p id="p11"></p>
+		<p id="p12"></p>
+		<p id="p13"></p>
+		<p id="p14"></p>
+		<p id="p15"></p>
+		<p id="p16"></p>
+		<p id="p17"></p>
+		<p id="p18"></p>
+		<p id="p19"></p>
+		<p id="p20"></p>
+
+		<script type="text/javascript">
+		/*
+			Browser Object Model 
+
+			Browser size(View port size)
+		    
+		    window.innerHeight
+		    document.documentElement.clientHeight	(for IE)
+		    document.body.clientHeight				(for IE)
+		    
+		    window.innerWidth
+			document.documentElement.clientWidth	(for IE)
+		    document.body.clientWidth				(for IE)
+
+			screen.width 		width of screen
+		    screen.height 		height of screen
+		    screen.availWidth 	available width of screen
+		    screen.availHeight 	available height of screen
+		    screen.colorDepth 	Color depth in total number of bits used to represent the number of colors the screen can display
+		    screen.pixelDepth   number of bits used to represent a color
+
+		    window.location.href 		returns the href (URL) of the current page
+		    window.location.hostname 	returns the domain name of the web host
+		    window.location.pathname 	returns the path and filename of the current page
+		    window.location.protocol 	returns the web protocol used (http:// or https://)
+		    window.location.assign 		loads a new document
+
+		    history.back() - same as clicking back in the browser
+		    history.forward() - same as clicking forward in the browser
+
+			window.setTimeout(function_name,period);	call function after a delay period
+			window.clearTimeout(timeoutVariable)		cancel timer
+
+			window.setInterval(function_name,period);	call function repetitively after every delay period
+		    window.clearInterval(timerVariable);		cancel timer
+			
+			Cookies
+			document.cookie="cookie_name=cookie_content; expires=Thu, 18 Dec 2015 12:00:00 UTC; path=/";
+				expires specifies when the cookie has to be deleted(specify past value to manually delete cookie)
+
+
+		*/
+
+		document.getElementById("p1").innerHTML="Browser Size"+"<br/>"+"Browser Height: "+window.innerHeight+"<br/>"+"Browser Width: "+window.innerWidth;
+		document.getElementById("p2").innerHTML="Screen Size"+"<br/>"+"Screen Height: "+screen.height+"<br/>"+"Screen Width: "+screen.width+"<br/>"+
+		"Available Screen Height: "+screen.availHeight+"<br/>"+"Available Screen Width: "+screen.availWidth+"<br/>"+
+		"<br/>"+"Color Depth: "+screen.colorDepth+"<br/>"+"Pixel Depth: "+screen.pixelDepth;
+
+		document.getElementById("p3").innerHTML="URL of current page: "+window.location.href+
+		"<br/>"+"Domain name of Host: "+window.location.hostname+
+		"<br/>"+"Pathname: "+window.location.pathname+
+		"<br/>"+"Protocol Used: "+window.location.protocol;
+
+		document.getElementById("p4").innerHTML="Cookies Enabled: "+navigator.cookieEnabled+
+		"<br/>"+"AppName: "+navigator.appName+"<br/>"+"Codename: "+navigator.appCodeName+
+		"<br/>"+"Browser Engine: "+navigator.product+
+		"<br/>"+"AppVersion: "+navigator.appVersion+
+		"<br/>"+"UserAgent: "+navigator.userAgent+
+		"<br/>"+"Platform: "+navigator.platform+
+		"<br/>"+"Language: "+navigator.language+
+		"<br/>"+"JavaEnabled: "+navigator.javaEnabled();
+
+		setTimeout(
+			
+			function()
+			{
+				document.getElementById("p5").innerHTML=number_as_hex(255); 				
+			}, 1000);
+
+		
+		var color_change=(function(){
+			var red_component=0;
+			var green_component=0;
+			var blue_component=0;
+
+			return function(){
+
+				var color_value="#"+number_as_hex(red_component)+number_as_hex(green_component)+number_as_hex(blue_component);
+				document.getElementById("p6").innerHTML=color_value;
+				document.getElementById("p6").style.color=color_value;
+
+				red_component=red_component+1;
+				
+				if(red_component>256)
+				{
+					red_component=0;
+					green_component=green_component+1;
+				}
+
+				if(green_component>256)
+				{
+					green_component=0;
+					blue_component=blue_component+blue_component;
+				}
+
+				if(blue_component>256)
+				{
+					blue_component=0;
+				}
+			}
+		})();
+
+		window.setInterval(color_change, 100);
+
+		document.cookie="cookie_name_1=one; expires=Thu, 18 Dec 2015 12:00:00 UTC; path=/";
+		document.cookie="cookie_name_2=two; expires=Thu, 18 Dec 2015 12:00:00 UTC; path=/";
+		
+		document.getElementById("p7").innerHTML=document.cookie;
+
+		function number_as_hex(input) 
+		{
+		    return ("0"+(Number(input).toString(16))).slice(-2).toUpperCase();
+		}
+
+		
+		</script>
+
+	</body>
+</html> 
+<!---->
+<!--End Of File-->

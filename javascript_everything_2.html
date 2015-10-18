@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="FieldTraveller" />
+		<meta name="application-name" content="javascript_everything" />
+		<meta name="description" content="JavaScript Quick Reference" />
+		<meta name="keywords" content="HTML,JavaScript, Quick Reference" />
+		
+		<title>JS e2</title>
+		
+		<!-- HTML5 Support for IE -->
+		<!--[if lt IE 9]>
+  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" type="text/css" href="./styles/styling_1.css" />
+	
+	</head>
+
+	<body>
+
+		<!--
+			DOM
+			The DOM (Document Object Model) is an API that represents and interacts with any HTML or XML document. The DOM is a document model loaded in the browser and representing the document as a node tree, where each node represents part of the document (e.g. an element, text string, or comment).
+			
+			document is the base object.(document can be replaced by any other object that represents a part of the document)
+
+			document.getElementById() 			Find an element by element id
+			document.getElementsByTagName() 	Find elements by tag name
+			document.getElementsByClassName() 	Find elements by class name 
+			document.createElement() 			Create an HTML element
+			document.removeChild() 				Remove an HTML element
+			document.appendChild() 				Add an HTML element
+			document.replaceChild() 			Replace an HTML element
+			document.write(text) 				Write into the HTML output stream
+
+			document.getElementById(id).onclick=function(){code} 	Adding event handler code to an onclick event
+
+			element.innerHTML= 						Change the inner HTML of an element
+			element.attribute= 						Change the attribute of an HTML element
+			element.setAttribute(attribute,value) 	Change the attribute of an HTML element
+			element.style.property= 				Change the style of an HTML element
+
+
+			Property 						Description 													DOM
+			document.anchors 				Returns all <a> elements that have a name attribute 			1
+			document.applets 				Returns all <applet> elements (Deprecated in HTML5) 			1
+			document.baseURI 				Returns the absolute base URI of the document 					3
+			document.body 					Returns the <body> element 										1
+			document.cookie 				Returns the document's cookie 									1
+			document.doctype 				Returns the document's doctype 									3
+			document.documentElement 		Returns the <html> element 										3
+			document.documentMode 			Returns the mode used by the browser 							3
+			document.documentURI 			Returns the URI of the document 								3
+			document.domain 				Returns the domain name of the document server 					1
+			document.domConfig 				Obsolete. Returns the DOM configuration 						3
+			document.embeds 				Returns all <embed> elements 									3
+			document.forms 					Returns all <form> elements 									1
+			document.head 					Returns the <head> element 										3
+			document.images 				Returns all <img> elements 										1
+			document.implementation 		Returns the DOM implementation 									3
+			document.inputEncoding 			Returns the document's encoding (character set) 				3
+			document.lastModified 			Returns the date and time the document was updated 				3
+			document.links 					Returns all <area> and <a> elements that have a href attribute 	1
+			document.readyState 			Returns the (loading) status of the document 					3
+			document.referrer 				Returns the URI of the referrer (the linking document) 			1
+			document.scripts 				Returns all <script> elements 									3
+			document.strictErrorChecking 	Returns if error checking is enforced 							3
+			document.title 					Returns the <title> element 									1
+			document.URL 					Returns the complete URL of the document 						1
+
+			Mouse Events		
+			onclick			The event occurs when the user clicks on an element	
+			oncontextmenu	The event occurs when the user right-clicks on an element to open a context menu	
+			ondblclick		The event occurs when the user double-clicks on an element	
+			onmousedown		The event occurs when the user presses a mouse button over an element	
+			onmouseenter	The event occurs when the pointer is moved onto an element	
+			onmouseleave	The event occurs when the pointer is moved out of an element	
+			onmousemove		The event occurs when the pointer is moving while it is over an element	
+			onmouseover		The event occurs when the pointer is moved onto an element, or onto one of its children	
+			onmouseout		The event occurs when a user moves the mouse pointer out of an element, or out of one of its children	
+			onmouseup		The event occurs when a user releases a mouse button over an element	
+					
+			Keyboard Events		
+			onkeydown	The event occurs when the user is pressing a key	
+			onkeypress	The event occurs when the user presses a key	
+			onkeyup		The event occurs when the user releases a key	
+					
+			Frame/Object Events		
+			onabort			The event occurs when the loading of a resource has been aborted	
+			onbeforeunload	The event occurs before the document is about to be unloaded	
+			onerror			The event occurs when an error occurs while loading an external file	
+			onhashchange	The event occurs when there has been changes to the anchor part of a URL	
+			onload			The event occurs when an object has loaded	
+			onpageshow		The event occurs when the user navigates to a webpage	
+			onpagehide		The event occurs when the user navigates away from a webpage	
+			onresize		The event occurs when the document view is resized	
+			onscroll		The event occurs when an element's scrollbar is being scrolled	
+			onunload		The event occurs once a page has unloaded (for <body>)	
+					
+			Form Events		
+			onblur		The event occurs when an element loses focus	
+			onchange	The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <keygen>, <select>, 			and <textarea>)	
+			onfocus		The event occurs when an element gets focus	
+			onfocusin	The event occurs when an element is about to get focus	
+			onfocusout	The event occurs when an element is about to lose focus	
+			oninput		The event occurs when an element gets user input	
+			oninvalid	The event occurs when an element is invalid	
+			onreset		The event occurs when a form is reset	
+			onsearch	The event occurs when the user writes something in a search field (for <input="search">)	
+			onselect	The event occurs after the user selects some text (for <input> and <textarea>)	
+			onsubmit	The event occurs when a form is submitted	
+					
+			Drag Events		
+			ondrag		The event occurs when an element is being dragged	
+			ondragend	The event occurs when the user has finished dragging an element	
+			ondragenter	The event occurs when the dragged element enters the drop target	
+			ondragleave	The event occurs when the dragged element leaves the drop target	
+			ondragover	The event occurs when the dragged element is over the drop target	
+			ondragstart	The event occurs when the user starts to drag an element	
+			ondrop		The event occurs when the dragged element is dropped on the drop target	
+					
+			Clipboard Events		
+			oncopy		The event occurs when the user copies the content of an element	
+			oncut		The event occurs when the user cuts the content of an element	
+			onpaste		The event occurs when the user pastes some content in an element	
+					
+			Print Events		
+			onafterprint	The event occurs when a page has started printing, or if the print dialogue box has been closed	
+			onbeforeprint	The event occurs when a page is about to be printed	
+					
+			Media Events		
+			onabort				The event occurs when the loading of a media is aborted	
+			oncanplay			The event occurs when the browser can start playing the media (when it has buffered enough to begin)	
+			oncanplaythrough	The event occurs when the browser can play through the media without stopping for buffering	
+			ondurationchange	The event occurs when the duration of the media is changed	
+			onemptied			The event occurs when something bad happens and the media file is suddenly unavailable (like unexpectedly disconnects)	
+			onended				The event occurs when the media has reach the end (useful for messages like "thanks for listening")	
+			onerror				The event occurs when an error occurred during the loading of a media file	
+			onloadeddata		The event occurs when media data is loaded	
+			onloadedmetadata	The event occurs when meta data (like dimensions and duration) are loaded	
+			onloadstart			The event occurs when the browser starts looking for the specified media	
+
+			use the following to add multiple listners to a html element or a dom object
+			target.addEventListener(type, listener,useCapture);
+				type 		event type
+				listener    function_name(or the definition of the function)
+				useCapture  use capture(parent to child) if true else use bubbling(child to parent)
+
+			target.removeEventListener(type, listener);
+
+			event type
+			abort
+		    beforeinput
+		    blur
+		    click
+		    compositionstart
+		    compositionupdate
+		    compositionend
+		    dblclick
+		    error
+		    focus
+		    focusin
+		    focusout
+		    input
+		    keydown
+		    keyup
+		    load
+		    mousedown
+		    mouseenter
+		    mouseleave
+		    mousemove
+		    mouseout
+		    mouseover
+		    mouseup
+		    resize
+		    scroll
+		    select
+		    unload
+		    wheel
+
+		    Node Navigation
+			<html><html> is the root element
+			an element has child nodes
+				the text it contains(node name #text)
+				the attributes it has(node name is same as attribute name)
+			
+			document.documentElement - The full document
+
+		    element_object.parentNode
+		    element_object.childNodes[nodenumber]
+		    element_object.firstChild
+		    element_object.lastChild
+		    element_object.nextSibling
+		    element_object.previousSibling
+
+		    Element type 	nodeType
+			Element 		1
+			Attribute 		2
+			Text 			3
+			Comment 		8
+			Document 		9
+
+			Add new html elements
+				parent_node.appendChild(child_node);	adds child at the end of parent_node
+				parent_node.insertBefore(child_node,another_child_node); adds child before another_child_node
+
+			Remove element
+				parent_node.removeChild(child_node);	removes child node
+			
+			Replace element
+			parentNode.replaceChild(newChild, oldChild)
+
+		 -->
+
+		<header class="row">
+			<h1 id="headerheading" >Responsive Web-Page</h1>
+		</header>
+
+		<div id="mdiv1" class="row">
+
+		<nav class="col-3">
+			<ul>
+				<li id="menu_item_1"><a href="#p2" onclick="js_function_1()">Lorem</a></li>
+				<li id="menu_item_2"><a href="#p4">ipsum</a></li>
+				<li id="menu_item_3"><a href="#p6">dolor</a></li>
+				<li id="menu_item_4"><a href="#p8">sit</a></li>
+				<li id="menu_item_5"><a href="#p10">amet</a></li>
+			</ul>
+		</nav>
+
+		<section class="col-9">
+
+				<h1 id="sectionheading">Lorem ipsum dolor sit amet</h1>
+
+				<article>
+					<p id="p1">
+						Lorem ipsum dolor sit amet, sagittis ante tincidunt, tellus nibh ipsum bibendum curabitur, sollicitudin sed turpis sit odio risus, tortor aliquam vel vestibulum felis risus, erat et cursus congue lacinia. Faucibus vestibulum vestibulum ac dolor cum vitae. Amet nunc vestibulum sapien massa donec quis, a dui. Diam ac turpis sapien nec molestiae, turpis velit cum, eu donec integer vitae nulla tristique. Molestie in magna. Imperdiet suspendisse non nibh numquam urna justo, nunc hymenaeos varius at tortor nam, neque iaculis a lacus lorem etiam fusce.
+					</p>
+
+					<p id="p2">
+						Eget non sem in elit vel a, suscipit mollis ultricies. Rutrum turpis nullam consectetuer vehicula. Eu luctus quam litora, dui ut semper leo suspendisse. Nec eu pretium orci nibh nibh ac, tellus amet eget, justo elementum sit. Eget arcu sapien aliquam viverra, eum amet dolor, purus egestas elementum quam consequat in. Quam in etiam pede quis nulla cursus, sed a, ac et. Ridiculus proin excepteur vitae duis condimentum, proin facilisis tellus netus odit turpis, sed justo mi erat, ac orci magna, nunc nisl ullamcorper vitae.
+					</p>
+
+					<p id="p3" >
+						Cum sed neque tristique enim quaerat nec, faucibus vitae, condimentum congue cras ante elementum. Bibendum augue, eu eu tincidunt, metus metus posuere dignissim est, nibh mauris. Praesent eu aenean, lacinia at elit quis eu, adipiscing arcu habitant interdum nunc. Non elementum class orci eget mi, iaculis volutpat quia elit aut sit sed. Ac id suspendisse augue. Velit duis egestas dui sed adipisicing sed, consectetuer odio pellentesque enim nonummy, lorem eget nullam, ipsum feugiat erat dui nulla, libero ut neque ad wisi ut velit. Aliquet ut amet arcu velit, diam lorem torquent ligula, orci risus ipsum ipsum adipiscing ut non. Dictumst sit, dui quis in placerat placerat, dignissim cras tellus est neque phasellus. Eleifend interdum. Non eros egestas ligula wisi et tincidunt, cum diam, eleifend elit auctor mattis nullam, sed sunt. Orci nunc ac vehicula.
+					</p>
+
+					<p id="p4">
+						Torquent esse suspendisse sollicitudin tristique ultrices cras, semper donec praesent, praesent in nullam, id felis. Eu dolorum recusandae inceptos, arcu enim, eget bibendum risus suspendisse tortor metus. Magna quisque hymenaeos ante mauris nunc, adipiscing nam luctus id sed mi, suspendisse mollis erat tortor. Euismod ut. Etiam nascetur accumsan maecenas quam, mauris in amet pharetra adipiscing ridiculus. Dignissim massa lectus, gravida quibusdam, imperdiet proin nemo egestas erat sed consectetuer. Tempus in, mollis vel. Orci risus ipsum metus, sit phasellus, pellentesque mauris mauris imperdiet posuere. Non sagittis in. Vitae duis scelerisque scelerisque rhoncus id maecenas, viverra lectus tortor vitae taciti, ut ante dictum consequat integer. Tellus velit in vitae nullam a quisque, torquent eu elit, pellentesque sollicitudin tincidunt tellus, donec gravida rutrum sodales enim, interdum ultrices velit id amet molestie nisl.
+					</p>
+
+					<p id="p5">
+						Eros cursus libero. Consequat non fermentum enim elit. Massa sed, pellentesque leo quam nam ac sociosqu. Pellentesque dolor soluta est dictumst nulla sed, vulputate ut sapien eget ultrices, eleifend vitae beatae ac, ligula error mauris lobortis eget, suspendisse ac felis consequat. Imperdiet eget auctor purus vehicula pulvinar, dolor malesuada libero etiam, diam sed scelerisque lacus donec. Libero urna, metus rutrum justo fermentum phasellus autem, elit pede amet non neque. Libero facilisi amet felis vitae, et quis elementum nullam nec tortor nunc, lacus pede ultricies molestie suspendisse, donec in vehicula nunc fringilla amet id, euismod tempus mauris enim feugiat id. Id odio vestibulum arcu laboriosam porta massa, non ac et et sed aliquam, blandit suspendisse nunc, suscipit non pharetra, blandit et. Nam luctus mattis tortor pharetra volutpat mauris, euismod ac dolor dolor senectus mollis penatibus, est animi sollicitudin, ridiculus rhoncus amet ut ut nunc neque, sem eu dignissim ultricies aliquam. Nunc nam pede eu etiam, eget fusce, sed velit pulvinar sit pellentesque, elementum ut aenean erat nullam. Sed curabitur donec quis in integer risus, dui nec sollicitudin odio neque quam. Est eleifend felis nam, velit est.
+					</p>
+
+					<p id="p6">
+						Sem quis scelerisque metus in rhoncus pellentesque. Dolore rutrum ut et sit, morbi sed dictumst curabitur, lacus amet phasellus donec. Sociis erat hendrerit et elit nec ipsum, mattis faucibus turpis volutpat eget fermentum viverra, facilisis nullam, ipsum in ridiculus, sed pretium pellentesque. Felis ipsum odio elit, justo ante malesuada adipiscing aptent, arcu adipiscing, donec elit, elit feugiat egestas eros. Semper dui nulla arcu, at ipsum erat sodales, lectus volutpat. Vitae sit aenean justo, aliquam proin perferendis urna massa erat sit, et sed mauris id pellentesque in, amet sodales adipiscing in vitae. Leo at et amet, enim eu purus donec, ut nonummy sagittis magna vel, enim porttitor non metus duis ligula a, adipiscing nec. Scelerisque mi at, est eu augue urna lacinia nibh.
+					</p>
+
+					<p id="p7">
+						In ante ultricies scelerisque non, sed rhoncus ut officiis, tellus pede dignissim felis. Malesuada mauris sed odio. In aliquet eleifend, non odio, tincidunt feugiat, egestas dui nunc sit vehicula lacus massa. Orci metus per semper, vivamus pede nam aenean id enim, duis sagittis lacus turpis viverra mollis a, et in magna bibendum, vestibulum rutrum ipsum mollitia ut ab. Ornare mi integer, ac consequat tellus ipsum ornare amet, sollicitudin nunc in fusce velit dolor assumenda, commodo elit, arcu mauris. Mauris viverra, placerat sodales sociosqu donec tincidunt id. Faucibus vestibulum pellentesque libero malesuada proin mauris, morbi duis lorem posuere dolor, vestibulum tortor neque, tellus consequat amet rutrum in. Vitae nunc in phasellus, duis et purus quis congue. Mauris sem harum mauris vitae blandit. Eget consectetuer sapien risus ac iure tellus, nisl ac irure pellentesque ac, eros metus egestas, consequat pede tristique, consectetuer aliquam. Vestibulum gravida risus vitae vitae porttitor odio, accumsan pharetra, eleifend sodales suspendisse tortor, tristique nostra faucibus luctus rutrum.
+					</p>
+
+					<p id="p8">
+						A lorem vitae, amet mauris proin platea vestibulum luctus lacinia, aptent eget elit, tristique ac magnis. Morbi ut sem potenti lacus pellentesque, malesuada arcu, vel at ipsum, vel cras in felis cras feugiat. Ullamcorper et purus orci vel ut, risus accumsan eros nec fusce eros. Convallis elit ullamcorper tellus sem a, tellus magna suspendisse litora laoreet, adipiscing consequuntur curabitur gravida, sed mattis. Donec lacus augue ante ut, vel nonummy et dis turpis vitae aenean, vel odio sed, ipsum sed dignissim sollicitudin sit.
+					</p>
+
+					<p id="p9">
+						Ut congue quis orci blandit malesuada sodales, vivamus at lorem mollis placerat, ipsum donec quis pede, elementum lectus phasellus fringilla. Sodales consequat lorem, in in, minima in litora nonummy mauris imperdiet. Bibendum quis maecenas pretium. Vel taciti wisi, purus erat est, suscipit lacus vestibulum turpis. Ut etiam, odio ut vestibulum, lacus vel eget augue ridiculus neque. Felis eros, sed convallis metus dictum, aenean ea phasellus aliquet pellentesque erat id, praesent volutpat, donec amet tellus libero eu. Porta tortor ligula a, adipiscing neque a augue posuere est, volutpat lectus eu tincidunt vivamus eget at, cursus pellentesque ac nulla pharetra, dui odio gravida. Mollis eget, qui ut sed sem nec ipsum nam, in fringilla pellentesque, sollicitudin donec, ornare vitae justo gravida. Purus congue, in sodales tellus suscipit aptent lobortis non, nibh vitae sed nec blandit, rhoncus adipiscing imperdiet donec suspendisse, wisi risus magna quis condimentum ac.
+					</p>
+
+					<p id="p10">
+						Quisque risus consequatur leo augue aliquam erat. Vestibulum augue, mauris diam, ridiculus nec nec. Malesuada nonummy velit id. Vivamus a aliquam dui, eleifend amet maecenas vel, in montes ac pretium sollicitudin nullam fringilla. Semper elementum, laoreet dictum interdum at eget a, sem vivamus mauris et nisl magna. Ante pellentesque, neque pulvinar ut fusce, at facilisis quisque velit amet ut, cum leo, amet lacus habitant eros eget nulla. Vitae turpis nostra morbi pulvinar nunc, non in vel in quis sem semper, suspendisse cursus vitae ipsum. Ante feugiat neque aliquam mauris sed, ultricies sed porttitor eu, nulla aliquam. Blandit maecenas dolor sint maecenas fusce aenean, feugiat risus duis in, purus duis. Pharetra pulvinar sed porta, fusce eget posuere, nascetur pharetra.
+					</p>
+
+				</article>
+
+		</section>
+
+		</div>
+
+		<br/>
+		<div id="mdiv2" class="row"> 
+			<aside >
+				<h2 class="col-12">About The Text:</h2>
+				<p >
+					In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. Replacing meaningful content with placeholder text allows viewers to focus on graphic aspects such as font, typography, and page layout without being distracted by the content. It also reduces the need for the designer to come up with meaningful text, as they can instead use quickly-generated lorem ipsum.
+				</p>
+			</aside>
+		</div>
+
+		<br/>
+		<br/>
+		<br/>
+		
+		<footer>
+			<div id="links">	
+				Text Copied From <a href="http://lorem-ipsum.perbang.dk/">Here</a> and <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">Wikipedia</a>.
+			</div>
+			
+			<div id="owner">
+				FieldTraveller
+			</div>
+		</footer>
+		
+		<script type="text/javascript">
+
+		document.write(Date());
+		document.getElementById("p1").innerHTML = "Changed by JS";
+		document.getElementById("p2").style.color = "blue";
+		// console.log(document.documentElement.innerHTML);
+		
+		for(var count_0=0;count_0<document.documentElement.childNodes.length;count_0++)
+		{
+   			console.log(document.documentElement.childNodes[count_0]);
+   			console.log(document.documentElement.childNodes[count_0].nodeType);
+		}
+
+		// for(var count_0=0;count_0<document.documentElement.childNodes[0].childNodes.length;count_0++)
+		// {
+  //  			console.log(document.documentElement.childNodes[0].childNodes[count_0]);
+		// }
+
+		// var parent_node=document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "section");
+		var parent_node=document.getElementsByTagName("section");
+		
+		var child_node_1 = document.createElement("p");
+		var text_node_1 = document.createTextNode("Added by JS 1");
+		child_node_1.appendChild(text_node_1);
+
+		parent_node[0].appendChild(child_node_1);
+
+		var child_node_2 = document.createElement("p");
+		var text_node_2= document.createTextNode("Added by JS 2");
+		child_node_2.appendChild(text_node_2);
+
+		parent_node[0].insertBefore(child_node_2,child_node_1);
+
+		var child_node_3 = document.createElement("p");
+		var text_node_3 = document.createTextNode("Added by JS 3");
+		child_node_3.appendChild(text_node_3);
+
+		var para5=document.getElementById("p5");
+		para5.parentNode.replaceChild(child_node_3, para5);
+		
+		var para6=document.getElementById("p6");
+		para6.parentNode.removeChild(para6);
+
+		document.getElementById("menu_item_1").addEventListener("mouseover", function(){
+			
+			document.getElementById("p4").style.color = "#FF00FF";			
+		});
+		
+		document.getElementById("menu_item_1").addEventListener("mouseleave", function(){
+			
+			document.getElementById("p4").style.color = "#FFFF00";			
+		});
+
+		document.getElementById("menu_item_1").addEventListener("click", function(){
+			
+			window.alert("Something was clicked");
+		});
+		
+		function js_function_1()
+		{
+			document.getElementById("p3").style.color = "red"
+		}
+
+		</script>
+
+	</body>
+</html> 
+<!---->
+<!--End Of File-->
